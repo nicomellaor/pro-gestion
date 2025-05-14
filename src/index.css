@@ -7,13 +7,15 @@ body {
 }
 
 h1 {
-  font-size: 2.5rem;
+  font-size: 3.5rem;
   font-weight: 700;
   text-align: center;
   margin-bottom: 1rem;
 }
 
 .text-center {
+  font-size: 1.5rem;
+  font-weight: 200;
   text-align: center;
   margin-bottom: 2rem;
 }
@@ -38,7 +40,7 @@ h1 {
   background-color: #121212;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
   color: #FFFFFF;
-  max-width: 320px;
+  /*max-width: 320px;*/
   margin: 0 auto;
 }
 
@@ -58,9 +60,9 @@ h1 {
   gap: 1rem; /* Espacio entre elementos */
   p {
     margin: 0;
-    word-break: break-word;
+    word-break: break-word; /* Rompe palabras largas */
     overflow-wrap: anywhere;
-    hyphens: auto;
+    hyphens: auto; /* Guiones en palabras largas */
   }
 }
 

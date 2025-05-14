@@ -12,7 +12,7 @@ function Task({ data, handleDragging }) {
         <div className="task" draggable onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
             <p>{data.content}</p>
             <Button variant="link" size="sm" className="p-0 text-secondary" >
-                <i className="bi bi-pencil-square"></i>
+                <i className="bi bi-box-arrow-up-right"></i>
             </Button>
         </div>
     )

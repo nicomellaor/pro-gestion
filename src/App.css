@@ -1,6 +1,6 @@
 #root {
   padding: 2rem; /* ~ 32px*/
-  max-width: 1320px;
+  /*max-width: 1320px;*/
   margin: 0 auto;
   display: flex;
   flex-direction: column;

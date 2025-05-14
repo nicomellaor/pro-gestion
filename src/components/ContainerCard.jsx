@@ -1,6 +1,4 @@
 import Task from "./Task"
-import { Button } from 'react-bootstrap'
-
 
 function ContainerCard({ tasks, state, isDragging, handleDragging, handleUpdateList }) {
     const handleDrop = (e) => {

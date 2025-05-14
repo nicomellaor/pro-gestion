@@ -36,7 +36,7 @@ function DragAndDrop ({tasks}) {
                 ))
             }
         </div>
-        <Button variant="outline-secondary" className="mt-5"><i className="bi bi-plus"></i>Añadir Tarea</Button>
+        <Button variant="primary" className="mt-5"><i className="bi bi-plus"></i>Añadir Tarea</Button>
         </>
     )
 
