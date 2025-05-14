@@ -1,3 +1,5 @@
+import { Button } from 'react-bootstrap'
+
 function Task({ data, handleDragging }) {
     const handleDragStart = (e) => {
         e.dataTransfer.setData('text', `${data.id}`);
@@ -9,6 +11,9 @@ function Task({ data, handleDragging }) {
     return (
         <div className="task" draggable onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
             <p>{data.content}</p>
+            <Button variant="link" size="sm" className="p-0 text-secondary" >
+                <i className="bi bi-pencil-square"></i>
+            </Button>
         </div>
     )
 }

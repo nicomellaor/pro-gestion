@@ -1,5 +1,6 @@
 import { useState } from "react"
 import ContainerCard from "./ContainerCard"
+import { Button } from 'react-bootstrap'
 
 function DragAndDrop ({tasks}) {
     const states = ['Backlog', 'Por hacer', 'En proceso', 'Hecho']
@@ -20,6 +21,7 @@ function DragAndDrop ({tasks}) {
     }
 
     return (
+        <>
         <div className="cards-grid">
             {
                 states.map( state => (
@@ -34,6 +36,8 @@ function DragAndDrop ({tasks}) {
                 ))
             }
         </div>
+        <Button variant="outline-secondary" className="mt-5"><i className="bi bi-plus"></i>Añadir Tarea</Button>
+        </>
     )
 
 }

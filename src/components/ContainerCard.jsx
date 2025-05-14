@@ -1,4 +1,6 @@
 import Task from "./Task"
+import { Button } from 'react-bootstrap'
+
 
 function ContainerCard({ tasks, state, isDragging, handleDragging, handleUpdateList }) {
     const handleDrop = (e) => {
@@ -15,11 +17,14 @@ function ContainerCard({ tasks, state, isDragging, handleDragging, handleUpdateL
             {
                 tasks.map(item => (
                     state === item.state
-                    && <Task
-                        data={item}
-                        key={item.id}
-                        handleDragging={handleDragging}
-                    />
+                    &&
+                    <>
+                        <Task
+                            data={item}
+                            key={item.id}
+                            handleDragging={handleDragging}
+                        />
+                    </>
                 ))
             }
         </div>

@@ -52,8 +52,15 @@ h1 {
   overflow-wrap: break-word;
   line-height: 1.2;
   min-height: fit-content;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem; /* Espacio entre elementos */
   p {
     margin: 0;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    hyphens: auto;
   }
 }
 
