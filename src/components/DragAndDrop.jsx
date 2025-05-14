@@ -2,7 +2,7 @@ import { useState } from "react"
 import ContainerCard from "./ContainerCard"
 
 function DragAndDrop ({tasks}) {
-    const states = ['Por hacer', 'En proceso', 'Hecho']
+    const states = ['Backlog', 'Por hacer', 'En proceso', 'Hecho']
     const [isDragging, setIsDragging] = useState(false)
     const [listTasks, setListTasks] = useState(tasks)
 
