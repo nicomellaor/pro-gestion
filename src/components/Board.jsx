@@ -3,11 +3,17 @@ import Column from "./Column"
 import { Button } from 'react-bootstrap'
 import { closestCenter, DndContext, KeyboardSensor, PointerSensor, useSensor, useSensors, DragOverlay } from "@dnd-kit/core";
 import { arrayMove, sortableKeyboardCoordinates } from "@dnd-kit/sortable";
+import TaskWindow from "./TaskWindow";
 
 function Board({ initialTasks }) {
   const states = ['Backlog', 'Por hacer', 'En proceso', 'Hecho'];
   const [tasks, setTasks] = useState(initialTasks);
   const [activeId, setActiveId] = useState(null);
+
+  // Manejar ventana emergente de Tarea
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   
   // Encontrar la tarea activa para mostrarla en el overlay
   const activeTask = activeId ? tasks.find(task => `task-${task.id}` === activeId) : null;
@@ -118,14 +124,11 @@ function Board({ initialTasks }) {
   };
 
   // Función para añadir una nueva tarea
-  const handleAddTask = () => {
+  const handleAddTask = (task) => {
     const newId = Math.max(...tasks.map(task => task.id)) + 1;
-    const newTask = {
-      id: newId,
-      content: `Nueva Tarea ${newId}`,
-      state: 'Backlog' // Por defecto en Backlog
-    };
+    const newTask = {...task, id: newId, state: 'Backlog'};
     setTasks([...tasks, newTask]);
+    console.log(newTask)
   };
 
   return (
@@ -148,15 +151,16 @@ function Board({ initialTasks }) {
           ))}
         </div>
         <div className="d-flex justify-content-center mt-5">
-          <Button variant="primary" onClick={handleAddTask}>
+          <Button variant="primary" onClick={handleShow}>
             <i className="bi bi-plus"></i> Añadir Tarea
           </Button>
         </div>
       </div>
+      <TaskWindow show={show} handleClose={handleClose} onSubmit={handleAddTask}></TaskWindow>
       <DragOverlay>
         {activeId && activeTask ? (
           <div className="task-custom-bg task-custom-py task-custom-lh task-custom-min-height d-flex justify-content-between align-items-center my-2 px-3 rounded-2 gap-3 text-break w-100 task-dragoverlay">
-            <p className='mb-0 task-p-styling'>{activeTask.content}</p>
+            <p className='mb-0 task-p-styling'>{activeTask.name}</p>
             <Button variant="link" size="sm" className="p-0 text-secondary">
               <i className="bi bi-box-arrow-up-right"></i>
             </Button>

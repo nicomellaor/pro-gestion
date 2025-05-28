@@ -2,10 +2,10 @@ import Board from "../components/Board"
 
 function Kanban() {
     const tasks = [
-        {id: 1, content: 'Tarea 1', state: 'Por hacer'}, 
-        {id: 2, content: 'Tarea 2', state: 'En proceso'}, 
-        {id: 3, content: 'Tarea 3', state: 'Backlog'}, 
-        {id: 4, content: 'Tarea 4', state: 'Por hacer'}
+        {id: 1, name: 'Tarea 1', state: 'Por hacer', description: 'Lorem ipsum dolor sit amet.', managers: 'Encargado 1, Encargado 2', startDate: '', endDate: ''}, 
+        {id: 2, name: 'Tarea 2', state: 'Por hacer', description: 'Lorem ipsum dolor sit amet.', managers: 'Encargado 1, Encargado 2', startDate: '', endDate: ''}, 
+        {id: 3, name: 'Tarea 3', state: 'En proceso', description: 'Lorem ipsum dolor sit amet.', managers: 'Encargado 1, Encargado 2', startDate: '', endDate: ''}, 
+        {id: 4, name: 'Tarea 4', state: 'Hecho', description: 'Lorem ipsum dolor sit amet.', managers: 'Encargado 1, Encargado 2', startDate: '', endDate: ''}
     ]
     const sprint = "Sprint #1"
 
