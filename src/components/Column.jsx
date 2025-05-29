@@ -2,7 +2,7 @@ import { SortableContext, verticalListSortingStrategy } from "@dnd-kit/sortable"
 import { useDroppable } from "@dnd-kit/core";
 import SortableTask from "./SortableTask"
 
-function Column({ id, tasks, state }) {
+function Column({ id, tasks, state, onEdit, onDelete }) {
   // Permitir que la columna sea una zona donde soltar
   const { setNodeRef } = useDroppable({
     id: id
@@ -25,6 +25,8 @@ function Column({ id, tasks, state }) {
               key={task.id}
               id={`task-${task.id}`}
               data={task}
+              onEdit={onEdit}
+              onDelete={onDelete}
             />
           ))}
         </SortableContext>

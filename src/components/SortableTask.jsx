@@ -2,7 +2,7 @@ import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import Task from './Task';
 
-export default function SortableTask({ id, data }) {
+export default function SortableTask({ id, data, onEdit, onDelete }) {
   const {
     attributes,
     listeners,
@@ -29,7 +29,7 @@ export default function SortableTask({ id, data }) {
       {...listeners}
       className="w-100"
     >
-      <Task data={data} />
+      <Task data={data} onEdit={onEdit} onDelete={onDelete}/>
     </div>
   );
 }

@@ -30,9 +30,6 @@ function Board({ initialTasks }) {
       activationConstraint: {
         distance: 5, // Ajusta la distancia mínima para activar el arrastre
       }
-    }),
-    useSensor(KeyboardSensor, {
-      coordinateGetter: sortableKeyboardCoordinates,
     })
   );
 
@@ -128,7 +125,23 @@ function Board({ initialTasks }) {
     const newId = Math.max(...tasks.map(task => task.id)) + 1;
     const newTask = {...task, id: newId, state: 'Backlog'};
     setTasks([...tasks, newTask]);
-    console.log(newTask)
+  };
+
+  // Función para editar una nueva tarea
+  const handleEditTask = (id, newTask) => {
+    let updatedTasks = tasks.map(task => {
+      if (task.id === id){
+        return newTask;
+      }
+      return task;
+    })
+    setTasks(updatedTasks);
+  };
+
+  // Función para eliminar una tarea
+  const handleDeleteTask = (id) => {
+    let newTasks = tasks.filter(task => task.id !== id);
+    setTasks(newTasks);
   };
 
   return (
@@ -147,6 +160,8 @@ function Board({ initialTasks }) {
               id={`column-${state}`}
               state={state}
               tasks={groupedTasks[state] || []}
+              onEdit={handleEditTask}
+              onDelete={handleDeleteTask}
             />
           ))}
         </div>
