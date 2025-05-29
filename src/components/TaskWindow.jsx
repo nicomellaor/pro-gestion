@@ -73,6 +73,19 @@ export default function TaskWindow({ show, handleClose, onSubmit, onDelete, data
     return task.name;
   };
 
+  const formatDateTime = (datetimeString) => {    
+    const date = new Date(datetimeString);    
+    const options = {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false
+    };
+    return date.toLocaleDateString('es-ES', options);
+  };
+
   return (
     <Modal show={show} onHide={handleModalClose} backdrop="static" keyboard={false} data-bs-theme="dark">
       <Modal.Header closeButton>
@@ -139,11 +152,11 @@ export default function TaskWindow({ show, handleClose, onSubmit, onDelete, data
             </div>
             <div className="mb-3">
               <h5>Fecha de inicio</h5>
-              <p>{task.startDate || 'No definida'}</p>
+              <p>{formatDateTime(task.startDate) || 'No definida'}</p>
             </div>
             <div className="mb-3">
               <h5>Fecha de fin</h5>
-              <p>{task.endDate || 'No definida'}</p>
+              <p>{formatDateTime(task.endDate) || 'No definida'}</p>
             </div>
           </>
         )}

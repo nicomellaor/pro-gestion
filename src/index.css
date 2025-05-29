@@ -16,3 +16,6 @@ body {
   width: '100%'; 
   opacity: 0.8;
 }
+.btn-icon-hover {
+  color: #fff !important;
+}
