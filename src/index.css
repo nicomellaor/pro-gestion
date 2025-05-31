@@ -4,6 +4,7 @@ body {
   font-family: "Poppins", sans-serif;
 }
 .column-custom-bg { background-color: var(--bs-gray-dark);}
+.column-hover { border: 2px dashed #fff; }
 .task-custom-bg { background-color: var(--bs-gray-900); }
 .task-custom-py { padding-top: 12px; padding-bottom: 12px; }
 .task-custom-lh { line-height: 1.2; }
@@ -12,8 +13,9 @@ body {
   overflow-wrap: anywhere;
   hyphens: auto;
 }
-.task-dragoverlay {
-  width: '100%'; 
+.task-dragging {
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  max-width: 350px !important; 
   opacity: 0.8;
 }
 .btn-icon-hover {
