@@ -2,6 +2,7 @@ import Tabla from "../components/Tabla";
 import ModalTabla from "../components/ModalTabla";
 import { Button, ButtonGroup } from 'react-bootstrap';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function Backlog() {
     const project = "Proyecto #1"
@@ -11,21 +12,21 @@ function Backlog() {
         {
             id: "US-001",
             historia: "Como usuario, quiero poder iniciar sesión para acceder a mis datos.",
-            prioridad: "alta",
+            prioridad: "Alta",
             puntos: 5,
             criterios: "Debe permitir ingresar email y contraseña válidos.",
         },
         {
             id: "US-002",
             historia: "Como administrador, quiero ver un listado de usuarios registrados.",
-            prioridad: "media",
+            prioridad: "Media",
             puntos: 3,
             criterios: "Mostrar nombre, email y fecha de registro.",
         },
         {
             id: "US-003",
             historia: "Como usuario, quiero poder cerrar sesión desde cualquier página.",
-            prioridad: "baja",
+            prioridad: "Baja",
             puntos: 2,
             criterios: "Debe haber un botón visible de 'Cerrar sesión' en la barra superior.",
         },
@@ -63,9 +64,9 @@ function Backlog() {
             <p className="fs-4 fw-lighter text-center mb-4">{project}</p>
             <div className="d-flex justify-content-center">
                 <ButtonGroup className = "gap-3 mb-4">
-                    <Button variant="secondary" style={{ borderRadius: "8px" }}>
+                    <Link to="/sprints"><Button variant="secondary" style={{ borderRadius: "8px" }}>
                         <i className="bi bi-box-arrow-in-right"></i> Ver Sprints
-                    </Button>
+                    </Button></Link>
                     <Button 
                         variant="dark" 
                         style={{ borderRadius: "8px" }} 

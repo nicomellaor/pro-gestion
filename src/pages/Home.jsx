@@ -1,6 +1,7 @@
 import ModalHome from "../components/ModalHome";
 import { Button, ButtonGroup, ListGroup } from 'react-bootstrap';
 import { useState } from 'react';
+import { Link } from "react-router-dom";
 
 export default function Home() {
     const [proyectos, setProyectos] = useState([
@@ -50,7 +51,7 @@ export default function Home() {
                         setBorrando(false);
                     }}
                 >
-                <i className="bi bi-plus"></i> Añadir Proyecto
+                <i className="bi bi-plus"></i> Añadir proyecto
                 </Button>
             </div>
             <Lista 
@@ -79,7 +80,7 @@ function Lista({proyectos, setBorrando, setAgregando, handleShow, setProyectoSel
     return(
         <div className="container">
             {proyectos.map( (proyecto,index) => (
-                <div className = "card mb-3 bg-secondary text-light" key={proyecto.id}>
+                <div className = "card mb-3 column-custom-bg text-light" key={proyecto.id}>
                     <div className="card-body">
                         <h5>{"Proyecto #"+(proyecto.id)}</h5>
                         <p><strong>Integrantes:</strong></p>
@@ -89,9 +90,9 @@ function Lista({proyectos, setBorrando, setAgregando, handleShow, setProyectoSel
                             ))}
                         </ListGroup>
                         <ButtonGroup className = "gap-3">
-                            <Button variant="secondary">
+                            <Link to="/backlog"><Button variant="secondary">
                                 <i className="bi bi-app-indicator"></i> Abrir
-                            </Button>
+                            </Button></Link>
                             <Button 
                                 variant="dark"
                                 onClick={

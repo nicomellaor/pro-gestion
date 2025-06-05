@@ -9,9 +9,9 @@ export default function ModalHome({agregarFila, cambiarFila, eliminarFila, show,
     const [id,setId] = useState("");
 
     const titulo = () => {
-        if (borrando) return "Borrar Proyecto";
-        if (agregando) return "Agregar Proyecto";
-        else return "Modificar Proyecto";
+        if (borrando) return "Borrar proyecto";
+        if (agregando) return "Agregar proyecto";
+        else return "Modificar proyecto";
     }
 
     const handleGuardar = () => {
@@ -34,7 +34,7 @@ export default function ModalHome({agregarFila, cambiarFila, eliminarFila, show,
             className="modal show"
             style={{ display: 'block', position: "initial"}}
         >
-            <Modal show={show} onHide={handleClose}>
+            <Modal show={show} onHide={handleClose} data-bs-theme="dark">
                 <Modal.Header closeButton>
                     <Modal.Title>{titulo()}</Modal.Title>
                 </Modal.Header>
@@ -42,14 +42,16 @@ export default function ModalHome({agregarFila, cambiarFila, eliminarFila, show,
                     { agregando ? (
                         <div>
                             <InputGroup>
-                                <Form.Control 
+                                <Form.Control
+                                    className="mb-3" 
                                     placeholder="ID"
                                     value={id}
                                     onChange={(e) => setId(e.target.value)}
                                 />
                             </InputGroup>
                             <InputGroup>
-                                <Form.Control 
+                                <Form.Control
+                                    className="mb-3" 
                                     placeholder="Usuarios (separar por coma)"
                                     value={usuarios}
                                     onChange={(e) => setUsuarios(e.target.value.split(","))}
@@ -61,6 +63,7 @@ export default function ModalHome({agregarFila, cambiarFila, eliminarFila, show,
                             <div>
                                 <InputGroup>
                                     <Form.Control 
+                                        className="mb-3"
                                         placeholder="ID a eliminar"
                                         value={id}
                                         onChange={(e) => setId(e.target.value)}
@@ -70,14 +73,16 @@ export default function ModalHome({agregarFila, cambiarFila, eliminarFila, show,
                         ) : (
                             <div>
                                 <InputGroup>
-                                    <Form.Control 
+                                    <Form.Control
+                                        className="mb-3" 
                                         placeholder="ID"
                                         value={id}
                                         onChange={(e) => setId(e.target.value)}
                                     />
                                 </InputGroup>
                                 <InputGroup>
-                                    <Form.Control 
+                                    <Form.Control
+                                        className="mb-3" 
                                         placeholder="Usuarios (separar por coma)"
                                         value={usuarios}
                                         onChange={(e) => setUsuarios(e.target.value.split(","))}
@@ -90,16 +95,16 @@ export default function ModalHome({agregarFila, cambiarFila, eliminarFila, show,
                 <Modal.Footer>
                     { agregando ? (
                         <div>
-                            <Button variant="secondary" onClick={handleClose}>Cancelar</Button>
-                            <Button variant="primary" onClick={handleGuardar}> <i className="bi bi-floppy"></i>Guardar</Button>
+                            <Button variant="secondary" onClick={handleClose} className="me-3">Cancelar</Button>
+                            <Button variant="primary" onClick={handleGuardar}> <i className="bi bi-floppy"></i> Guardar</Button>
                         </div>
                     ) : ( borrando ? (
                         <div>
-                            <Button variant="danger" onClick={()=>{eliminarFila(id); handleClose; resetFormulario()}}> <i className="bi bi-trash"></i>Eliminar</Button>
+                            <Button variant="danger" onClick={()=>{eliminarFila(id); handleClose; resetFormulario()}}> <i className="bi bi-trash"></i> Eliminar</Button>
                         </div>
                     ) : (
                         <div>
-                            <Button variant="secondary" onClick={handleClose}>Cancelar</Button>
+                            <Button variant="secondary" onClick={handleClose} className="me-3">Cancelar</Button>
                             <Button variant="primary" onClick={handleGuardar}> <i className="bi bi-floppy"></i> Guardar</Button>
                         </div>
                     ))}

@@ -1,6 +1,7 @@
 import ModalSprint from "../components/ModalSprint";
 import { Button, ButtonGroup, ListGroup } from 'react-bootstrap';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Sprints() {
     const project = "Proyecto #1"
@@ -26,7 +27,7 @@ export default function Sprints() {
         setProyectos(nuevosProyectos);
     };
     const agregarFila = (datos) => {
-        if (!proyectos.find(proyecto => proyecto.id === datos.id)){
+        if (!proyectos.find(sprint => sprint.id === datos.id)){
             setProyectos([...proyectos,datos]);
         }
     };
@@ -73,7 +74,7 @@ export default function Sprints() {
                 handleClose={handleClose} 
                 agregando={agregando} 
                 borrando={borrando} 
-                proyecto={proyectoSelect}
+                sprint={proyectoSelect}
             />
         </>
       )
@@ -82,22 +83,22 @@ export default function Sprints() {
 function Lista({proyectos, setBorrando, setAgregando, handleShow, setProyectoSelect, eliminarFila}){
     return(
         <div className="container">
-            {proyectos.map( (proyecto,index) => (
-                <div className = "card mb-3 bg-secondary text-light" key={proyecto.id}>
+            {proyectos.map( (sprint,index) => (
+                <div className = "card mb-3 column-custom-bg text-light" key={sprint.id}>
                     <div className="card-body">
-                        <h5>{"Proyecto #"+(proyecto.id)}</h5>
+                        <h5>{"Sprint #"+(sprint.id)}</h5>
                         <p><strong>Fechas:</strong></p>
-                        <p>{"Fecha inicio: "+proyecto.inicio}</p>
-                        <p>{"Fecha término: "+proyecto.fin}</p>
+                        <p>{"Fecha inicio: "+sprint.inicio}</p>
+                        <p>{"Fecha término: "+sprint.fin}</p>
                         <ButtonGroup className = "gap-3">
-                            <Button variant="secondary">
+                            <Link to="/kanban"><Button variant="secondary">
                                 <i className="bi bi-app-indicator"></i> Abrir
-                            </Button>
+                            </Button></Link>
                             <Button 
                                 variant="dark"
                                 onClick={
                                     () => {
-                                        setProyectoSelect(proyecto);
+                                        setProyectoSelect(sprint);
                                         handleShow();
                                         setBorrando(false);
                                         setAgregando(false);
@@ -110,7 +111,7 @@ function Lista({proyectos, setBorrando, setAgregando, handleShow, setProyectoSel
                                 variant="danger"
                                 onClick={
                                     () => {
-                                        eliminarFila(proyecto.id);
+                                        eliminarFila(sprint.id);
                                         setBorrando(true);
                                         setAgregando(false);
                                     }
