@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { Button } from 'react-bootstrap'
 import { DragDropContext } from '@hello-pangea/dnd'
 import Column from "./Column"
-import TaskWindow from "./TaskWindow"
+import ModalTask from "./ModalTask"
 
 export default function Board() {
   const [tasks, setTasks] = useState(() => {
@@ -121,12 +121,12 @@ export default function Board() {
         
         <div className="d-flex justify-content-center mt-5">
           <Button variant="primary" onClick={handleShow}>
-            <i className="bi bi-plus"></i> Añadir Tarea
+            <i className="bi bi-plus-circle"></i> Añadir Tarea
           </Button>
         </div>
       </div>
       
-      <TaskWindow 
+      <ModalTask 
         show={show} 
         handleClose={handleClose} 
         onSubmit={handleAddTask}

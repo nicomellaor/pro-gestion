@@ -51,10 +51,10 @@ export default function Home() {
                         setBorrando(false);
                     }}
                 >
-                <i className="bi bi-plus"></i> Añadir proyecto
+                <i className="bi bi-plus-circle"></i> Añadir proyecto
                 </Button>
             </div>
-            <Lista 
+            <List 
                 proyectos={proyectos} 
                 setBorrando={setBorrando} 
                 setAgregando={setAgregando} 
@@ -76,7 +76,7 @@ export default function Home() {
     )
 }
 
-function Lista({proyectos, setBorrando, setAgregando, handleShow, setProyectoSelect, eliminarFila}){
+function List({proyectos, setBorrando, setAgregando, handleShow, setProyectoSelect, eliminarFila}){
     return(
         <div className="container">
             {proyectos.map( (proyecto,index) => (
@@ -89,36 +89,36 @@ function Lista({proyectos, setBorrando, setAgregando, handleShow, setProyectoSel
                                 <ListGroup.Item key={indice} className="bg-dark text-light border-0">{usuario}</ListGroup.Item>
                             ))}
                         </ListGroup>
-                        <ButtonGroup className = "gap-3">
-                            <Link to="/backlog"><Button variant="secondary">
-                                <i className="bi bi-app-indicator"></i> Abrir
-                            </Button></Link>
-                            <Button 
-                                variant="dark"
-                                onClick={
-                                    () => {
-                                        setProyectoSelect(proyecto);
-                                        handleShow();
-                                        setBorrando(false);
-                                        setAgregando(false);
-                                    }
+                        <Link to="/backlog"><Button variant="secondary" className="me-3">
+                            <i className="bi bi-app-indicator"></i> Abrir
+                        </Button></Link>
+                        <Button 
+                            variant="dark"
+                            className="me-3"
+                            onClick={
+                                () => {
+                                    setProyectoSelect(proyecto);
+                                    handleShow();
+                                    setBorrando(false);
+                                    setAgregando(false);
                                 }
-                            >
-                                <i className="bi bi-pencil-square"></i> Editar
-                            </Button>
-                            <Button 
-                                variant="danger"
-                                onClick={
-                                    () => {
-                                        eliminarFila(proyecto.id);
-                                        setBorrando(true);
-                                        setAgregando(false);
-                                    }
+                            }
+                        >
+                            <i className="bi bi-pencil-square"></i> Editar
+                        </Button>
+                        <Button 
+                            variant="danger"
+                            className="me-3"
+                            onClick={
+                                () => {
+                                    eliminarFila(proyecto.id);
+                                    setBorrando(true);
+                                    setAgregando(false);
                                 }
-                            >
-                                <i className="bi bi-trash"></i> Borrar
-                            </Button>
-                        </ButtonGroup>
+                            }
+                        >
+                            <i className="bi bi-trash"></i> Borrar
+                        </Button>
                     </div>
                 </div>
             ))}

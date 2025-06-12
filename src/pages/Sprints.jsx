@@ -55,10 +55,10 @@ export default function Sprints() {
                         setBorrando(false);
                     }}
                 >
-                <i className="bi bi-plus"></i> Añadir Sprint
+                <i className="bi bi-plus-circle"></i> Añadir Sprint
                 </Button>
             </div>
-            <Lista 
+            <List 
                 proyectos={proyectos} 
                 setBorrando={setBorrando} 
                 setAgregando={setAgregando} 
@@ -80,7 +80,7 @@ export default function Sprints() {
       )
 }
 
-function Lista({proyectos, setBorrando, setAgregando, handleShow, setProyectoSelect, eliminarFila}){
+function List({proyectos, setBorrando, setAgregando, handleShow, setProyectoSelect, eliminarFila}){
     return(
         <div className="container">
             {proyectos.map( (sprint,index) => (

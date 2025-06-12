@@ -4,16 +4,7 @@ import  { useState } from 'react';
 //Componente de tabla
 export default function Tabla({filas}){
     return(
-        <div 
-            className="p-4"
-            style={{
-                marginLeft: "60px",
-                marginRight: "60px",
-                backgroundColor: "#111", // más oscuro que bg-dark
-                borderRadius: "12px"
-            }}
-        >
-            <Table hover responsive variant="dark">
+            <Table striped bordered hover responsive variant="dark">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -36,6 +27,5 @@ export default function Tabla({filas}){
                     ))}
                 </tbody>
             </Table>
-        </div>
     );
 }

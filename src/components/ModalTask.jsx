@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 
-export default function TaskWindow({ show, handleClose, onSubmit, onDelete, data }) {
+export default function ModalTask({ show, handleClose, onSubmit, onDelete, data }) {
   const initialTask = {
     id: '',
     name: '',

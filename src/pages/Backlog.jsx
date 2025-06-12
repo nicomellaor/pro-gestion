@@ -101,11 +101,18 @@ function Backlog() {
                                 setBorrando(false)
                             }
                         }>
-                        <i className="bi bi-plus"></i> Historia
+                        <i className="bi bi-plus-circle"></i> Historia
                     </Button>
                 </ButtonGroup>
             </div>
-            <Tabla filas={filas}/>
+            <div 
+            className="p-4"
+            style={{
+                marginLeft: "60px",
+                marginRight: "60px"
+            }}>
+                <Tabla filas={filas}/>
+            </div>        
             <ModalTabla agregarFila={agregarFila} cambiarFila={cambiarFila} borrando={borrando} agregando={agregando} show={show} handleClose={handleClose} eliminarFila={eliminarFila}/>
         </>
       )

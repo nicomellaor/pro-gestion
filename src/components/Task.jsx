@@ -1,6 +1,6 @@
 import { Button } from 'react-bootstrap'
 import { Draggable } from '@hello-pangea/dnd'
-import TaskWindow from './TaskWindow'
+import ModalTask from './ModalTask'
 import { useState } from 'react'
 
 export default function Task({ id, index, data, onEdit, onDelete }) {
@@ -39,7 +39,7 @@ export default function Task({ id, index, data, onEdit, onDelete }) {
         )}
       </Draggable>
       
-      <TaskWindow 
+      <ModalTask 
         show={show} 
         handleClose={handleClose} 
         onSubmit={handleChange} 
