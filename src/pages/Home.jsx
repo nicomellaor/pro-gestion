@@ -54,7 +54,7 @@ export default function Home() {
                 <i className="bi bi-plus-circle"></i> Añadir proyecto
                 </Button>
             </div>
-            <List 
+            <ListHome 
                 proyectos={proyectos} 
                 setBorrando={setBorrando} 
                 setAgregando={setAgregando} 
@@ -76,7 +76,7 @@ export default function Home() {
     )
 }
 
-function List({proyectos, setBorrando, setAgregando, handleShow, setProyectoSelect, eliminarFila}){
+function ListHome({proyectos, setBorrando, setAgregando, handleShow, setProyectoSelect, eliminarFila}){
     return(
         <div className="container">
             {proyectos.map( (proyecto,index) => (

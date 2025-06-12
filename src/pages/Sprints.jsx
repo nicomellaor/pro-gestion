@@ -58,7 +58,7 @@ export default function Sprints() {
                 <i className="bi bi-plus-circle"></i> Añadir Sprint
                 </Button>
             </div>
-            <List 
+            <ListSprint 
                 proyectos={proyectos} 
                 setBorrando={setBorrando} 
                 setAgregando={setAgregando} 
@@ -80,7 +80,7 @@ export default function Sprints() {
       )
 }
 
-function List({proyectos, setBorrando, setAgregando, handleShow, setProyectoSelect, eliminarFila}){
+function ListSprint({proyectos, setBorrando, setAgregando, handleShow, setProyectoSelect, eliminarFila}){
     return(
         <div className="container">
             {proyectos.map( (sprint,index) => (
@@ -90,36 +90,36 @@ function List({proyectos, setBorrando, setAgregando, handleShow, setProyectoSele
                         <p><strong>Fechas:</strong></p>
                         <p>{"Fecha inicio: "+sprint.inicio}</p>
                         <p>{"Fecha término: "+sprint.fin}</p>
-                        <ButtonGroup className = "gap-3">
-                            <Link to="/kanban"><Button variant="secondary">
-                                <i className="bi bi-app-indicator"></i> Abrir
-                            </Button></Link>
-                            <Button 
-                                variant="dark"
-                                onClick={
-                                    () => {
-                                        setProyectoSelect(sprint);
-                                        handleShow();
-                                        setBorrando(false);
-                                        setAgregando(false);
-                                    }
+                        <Link to="/kanban"><Button variant="secondary" className="me-3">
+                            <i className="bi bi-app-indicator"></i> Abrir
+                        </Button></Link>
+                        <Button 
+                            variant="dark"
+                            className="me-3"
+                            onClick={
+                                () => {
+                                    setProyectoSelect(sprint);
+                                    handleShow();
+                                    setBorrando(false);
+                                    setAgregando(false);
                                 }
-                            >
-                                <i className="bi bi-pencil-square"></i> Editar
-                            </Button>
-                            <Button 
-                                variant="danger"
-                                onClick={
-                                    () => {
-                                        eliminarFila(sprint.id);
-                                        setBorrando(true);
-                                        setAgregando(false);
-                                    }
+                            }
+                        >
+                            <i className="bi bi-pencil-square"></i> Editar
+                        </Button>
+                        <Button 
+                            variant="danger"
+                            className="me-3"
+                            onClick={
+                                () => {
+                                    eliminarFila(sprint.id);
+                                    setBorrando(true);
+                                    setAgregando(false);
                                 }
-                            >
-                                <i className="bi bi-trash"></i> Borrar
-                            </Button>
-                        </ButtonGroup>
+                            }
+                        >
+                            <i className="bi bi-trash"></i> Borrar
+                        </Button>
                     </div>
                 </div>
             ))}
