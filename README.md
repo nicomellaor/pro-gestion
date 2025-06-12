@@ -1,6 +1,12 @@
 # Pro-Gestión - Software de Gestión de Proyectos Ágiles
 Gracias a esta herramienta podrás gestionar tus proyectos utilizando metodologías como SCRUM y Kanban en un solo lugar. 
 
+## Sitio Web
+https://nicomellaor.github.io/pro-gestion/
+
+## Repositorio Backend
+https://github.com/nicomellaor/backend-pro-gestion
+
 ## Secciones
 - **Home**: Página principal de selección de proyectos.
 - **Backlog**: Tabla del Product Backlog donde podrás organizar tus historias de usuario.
