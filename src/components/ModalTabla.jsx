@@ -19,7 +19,7 @@ export default function ModalTabla({ agregarFila, cambiarFila, borrando, agregan
         else return "Modificar Historia";
     }
 
-    const handleGuardar = () => {
+    const handleSave = () => {
         const datos = { id, historia, prioridad, puntos, criterios: criterio};
 
         if (agregando) {
@@ -122,7 +122,7 @@ export default function ModalTabla({ agregarFila, cambiarFila, borrando, agregan
                         ) : (
                             <div>
                                 <Button variant="secondary" onClick={handleClose} className="me-3">Cancelar</Button>
-                                <Button variant="primary" onClick={handleGuardar}> <i className="bi bi-floppy"></i> Guardar</Button>
+                                <Button variant="primary" onClick={handleSave}> <i className="bi bi-floppy"></i> Guardar</Button>
                             </div>
                         )
                     }

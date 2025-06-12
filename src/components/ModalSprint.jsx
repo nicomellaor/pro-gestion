@@ -15,7 +15,7 @@ export default function ModalSprint({agregarFila, cambiarFila, eliminarFila, sho
         else return "Modificar Sprint";
     }
 
-    const handleGuardar = () => {
+    const handleSave = () => {
         const datos = {id: id, inicio: inicio, fin: fin}
 
         if(agregando){
@@ -115,7 +115,7 @@ export default function ModalSprint({agregarFila, cambiarFila, eliminarFila, sho
                     { agregando ? (
                         <div>
                             <Button variant="secondary" onClick={handleClose} className="me-3">Cancelar</Button>
-                            <Button variant="primary" onClick={handleGuardar}> <i className="bi bi-floppy"></i> Guardar</Button>
+                            <Button variant="primary" onClick={handleSave}> <i className="bi bi-floppy"></i> Guardar</Button>
                         </div>
                     ) : ( borrando ? (
                         <div>
@@ -124,7 +124,7 @@ export default function ModalSprint({agregarFila, cambiarFila, eliminarFila, sho
                     ) : (
                         <div>
                             <Button variant="secondary" onClick={handleClose} className="me-3">Cancelar</Button>
-                            <Button variant="primary" onClick={handleGuardar}> <i className="bi bi-floppy"></i> Guardar</Button>
+                            <Button variant="primary" onClick={handleSave}> <i className="bi bi-floppy"></i> Guardar</Button>
                         </div>
                     ))}
                 </Modal.Footer>
