@@ -1,7 +1,5 @@
 import Table from 'react-bootstrap/Table';
-import  { useState } from 'react';
 
-//Componente de tabla
 export default function Tabla({filas}){
     return(
             <Table striped bordered hover responsive variant="dark">

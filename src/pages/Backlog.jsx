@@ -1,6 +1,6 @@
 import Tabla from "../components/Tabla";
 import ModalTabla from "../components/ModalTabla";
-import { Button, ButtonGroup } from 'react-bootstrap';
+import { Button, ButtonGroup, Alert } from 'react-bootstrap';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -34,6 +34,14 @@ function Backlog() {
     const [show, setShow] = useState(false);
     const [borrando, setBorrando] = useState(false);
     const [agregando, setAgregando] = useState(false);
+    const [mensaje, setMensaje] = useState(null);
+
+    const mostrarMensaje = (texto, tipo) => {
+        setMensaje({ texto, tipo });
+        setTimeout(() => {
+            setMensaje(null);
+        }, 3000);
+    };
 
     //Mostrar y Cerrar el Modal
     const handleClose = () => setShow(false);
@@ -41,7 +49,12 @@ function Backlog() {
 
     //Funcion para agregar filas
     const agregarFila = (datos) => {
+        if (filas.find(fila => fila.id === datos.id)) {
+            mostrarMensaje(`Ya existe una historia con ID ${datos.id}`, "danger");
+            return;
+        }
         setFilas([...filas,datos]);
+        mostrarMensaje(`Historia ${datos.id} agregada correctamente`, "success");
     };
 
     //Cambiar elementos de una fila
@@ -50,18 +63,37 @@ function Backlog() {
                 fila.id === datos.id ? datos : fila
         );
         setFilas(nuevasFilas);
+        mostrarMensaje(`Historia ${datos.id} modificada correctamente`, "success");
     };
 
     //Quitar fila
-    const eliminarFila = (datos) => {
-        const nuevasFilas = filas.filter( fila => fila.id !== datos);
-        setFilas(nuevasFilas);
+    const eliminarFila = (idStory) => {
+        const storyEliminada = filas.find(f => f.id === idStory);
+        if (storyEliminada) {
+            const nuevasFilas = filas.filter( fila => fila.id !== idStory);
+            setFilas(nuevasFilas);
+            mostrarMensaje(`Historia ${idStory} eliminada correctamente`, "success");
+        } else {
+            mostrarMensaje(`No se encontró la historia con ID ${idStory}`, "danger");
+        }
+        
     };
 
     return (
         <>
             <h1 className="display-4 fw-bold text-center mb-3">Product Backlog 📋</h1>
             <p className="fs-4 fw-lighter text-center mb-4">{project}</p>
+            {mensaje && (
+                <Alert 
+                    variant={mensaje.tipo} 
+                    className="mx-auto mb-4" 
+                    style={{maxWidth: '600px'}}
+                    dismissible 
+                    onClose={() => setMensaje(null)}
+                >
+                    {mensaje.texto}
+                </Alert>
+            )}
             <div className="d-flex justify-content-center">
                 <ButtonGroup className = "gap-3 mb-4">
                     <Link to="/sprints"><Button variant="secondary" style={{ borderRadius: "8px" }}>
@@ -73,7 +105,7 @@ function Backlog() {
                         onClick={
                             ()=>{
                                 handleShow()
-                                setAgregando(true)
+                                setAgregando(false)
                                 setBorrando(false)
                             }
                         }>
