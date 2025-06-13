@@ -34,13 +34,13 @@ export default function Home() {
             setProyectos(nuevosProyectos);
             mostrarMensaje(`Proyecto "${idProyecto}" eliminado correctamente`, "success");
         } else {
-            mostrarMensaje(`No se encontró el proyecto con ID "${idProyecto}"`, "danger");
+            mostrarMensaje(`No se encontró el proyecto con ID ${idProyecto}`, "danger");
         }
     };
 
     const agregarFila = (datos) => {
         if (proyectos.find(proyecto => proyecto.id === datos.id)){
-            mostrarMensaje(`Ya existe un proyecto con el ID "${datos.id}"`, "warning");
+            mostrarMensaje(`Ya existe un proyecto con el ID ${datos.id}`, "danger");
             return;
         }
         setProyectos([...proyectos,datos]);
@@ -129,18 +129,6 @@ export default function Home() {
 }
 
 function ListHome({proyectos, abrirModalModificar, abrirModalEliminar}){
-    if (proyectos.length === 0) {
-        return (
-            <div className="text-center py-5">
-                <div className="mb-4">
-                    <i className="bi bi-folder2-open display-1 text-muted"></i>
-                </div>
-                <h4 className="text-muted">No hay proyectos disponibles</h4>
-                <p className="text-muted">Haz clic en "Añadir proyecto" para crear tu primer proyecto</p>
-            </div>
-        );
-    }
-    
     return(
         <div className="container-fluid">
             <Row className="justify-content-center">
@@ -154,13 +142,13 @@ function ListHome({proyectos, abrirModalModificar, abrirModalEliminar}){
                                         Proyecto #{proyecto.id}
                                     </h5>
                                     <span className="badge bg-light text-dark">
-                                        {proyecto.users.length} integrante{proyecto.users.length !== 1 ? 's' : ''}
+                                        {proyecto.users.length} colaborador{proyecto.users.length !== 1 ? 'es' : ''}
                                     </span>
                                 </div>
-                                <div className="mb-3">
+                                {proyecto.users.length!==0 && <div className="mb-3">
                                     <p className="text-white-50 mb-2 fw-semibold">
                                         <i className="bi bi-people me-2"></i>
-                                        Integrantes:
+                                        Colaboradores:
                                     </p>                                
                                     <ListGroup className="mb-3">
                                         {proyecto.users.map((usuario,indice) => (
@@ -170,21 +158,21 @@ function ListHome({proyectos, abrirModalModificar, abrirModalEliminar}){
                                             </ListGroup.Item>
                                         ))}
                                     </ListGroup>
-                                </div>
+                                </div>}
                                 <Link to="/backlog"><Button variant="secondary" className="me-3">
                                     <i className="bi bi-app-indicator"></i> Abrir
                                 </Button></Link>
                                 <Button 
                                     variant="dark"
                                     className="me-3"
-                                    onClick={() => abrirModalModificar()}
+                                    onClick={() => abrirModalModificar(proyecto)}
                                 >
                                     <i className="bi bi-pencil-square"></i> Editar
                                 </Button>
                                 <Button 
                                     variant="danger"
                                     className="me-3"
-                                    onClick={() => abrirModalEliminar()}
+                                    onClick={() => abrirModalEliminar(proyecto)}
                                 >
                                     <i className="bi bi-trash"></i> Borrar
                                 </Button>

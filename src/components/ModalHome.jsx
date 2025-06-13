@@ -10,17 +10,17 @@ export default function ModalHome({agregarFila, cambiarFila, eliminarFila, show,
     const [errors, setErrors] = useState({});
 
     useEffect(() => {
-        if (show && data && !agregando && !borrando) {
+        if (show && data && !agregando) {
             setId(data.id || null);
             setUsers(data.users || []);
         }
-    }, [show, data, agregando, borrando]);
+    }, [show, data, agregando]);
 
     useEffect(() => {
-        if (show && (agregando || borrando)) {
+        if (show && agregando) {
             resetDatos();
         }
-    }, [show, agregando, borrando]);
+    }, [show, agregando]);
 
     const titulo = () => {
         if (borrando) return "Borrar proyecto";
@@ -80,7 +80,7 @@ export default function ModalHome({agregarFila, cambiarFila, eliminarFila, show,
     }
 
     return(
-        <Modal show={show} onHide={handleClose} data-bs-theme="dark">
+        <Modal show={show} onHide={handleModalClose} data-bs-theme="dark">
             <Modal.Header closeButton>
                 <Modal.Title>{titulo()}</Modal.Title>
             </Modal.Header>
@@ -113,23 +113,9 @@ export default function ModalHome({agregarFila, cambiarFila, eliminarFila, show,
                 ) : (
                     borrando ? (
                         <div>
-                            <InputGroup>
-                                <Form.Control 
-                                    className="mb-3"
-                                    placeholder="ID a eliminar"
-                                    type="number"
-                                    min={1}
-                                    value={id}
-                                    onChange={(e) => setId(e.target.value)}
-                                    isInvalid={!!errors.id}
-                                />
-                                <Form.Control.Feedback type="invalid">
-                                    {errors.id}
-                                </Form.Control.Feedback>
-                            </InputGroup>
                             <p>
-                                <i className="bi bi-exclamation-triangle me-2"></i> 
-                                ¿Está seguro que desea eliminar el proyecto con ID: <strong>{id}</strong>?
+                                <i className="bi bi-exclamation-triangle-fill me-2"></i> 
+                                ¿Está seguro que desea eliminar el Proyecto #{id}?
                             </p>
                         </div>
                     ) : (
