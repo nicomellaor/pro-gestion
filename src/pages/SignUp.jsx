@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { Button, Form, Container, Row, Col, Card } from 'react-bootstrap';
 
-export default function LogIn() {
+export default function SignUp(){
     const [validated, setValidated] = useState(false);
     const [form, setForm] = useState({
         username: '',
+        email: '',
         password: ''
     });
 
@@ -29,7 +30,7 @@ export default function LogIn() {
                         <p className="fs-5 text-center mb-4">Todos tus proyectos ágiles en un solo lugar</p>
                         <Card className="column-custom-bg border-0" data-bs-theme="dark">
                             <Card.Body className="p-5">
-                                <h3 className="fw-bold text-white mb-4">Iniciar Sesión</h3>
+                                <h3 className="fw-bold text-primary mb-4">Registrarme</h3>
                                 <Form noValidate validated={validated} onSubmit={handleSubmit} data-bs-theme="dark">
                                     <Form.Group className="mb-3" controlId="validationUser">
                                         <Form.Label className="fw-semibold text-light">
@@ -46,6 +47,23 @@ export default function LogIn() {
                                         />
                                         <Form.Control.Feedback type="invalid">
                                             El nombre de usuario debe tener al menos 3 caracteres
+                                        </Form.Control.Feedback>
+                                    </Form.Group>
+
+                                    <Form.Group className="mb-3" controlId="validationEmail">
+                                        <Form.Label className="fw-semibold text-light">
+                                            <i className="bi bi-envelope-fill me-2"></i>Correo
+                                        </Form.Label>
+                                        <Form.Control 
+                                            required 
+                                            type="email" 
+                                            placeholder="Ingresa tu correo" 
+                                            value={form.email} 
+                                            onChange={(e) => setForm({...form, email: e.target.value})} 
+                                            className="border-0"
+                                        />
+                                        <Form.Control.Feedback type="invalid">
+                                            El correo debe tener un formato válido (hi@example.com)
                                         </Form.Control.Feedback>
                                     </Form.Group>
                                     
@@ -69,12 +87,9 @@ export default function LogIn() {
                                     
                                     <div className="d-grid gap-3 my-4">
                                         <Button variant="primary" type="submit">
-                                            <i className="bi bi-box-arrow-in-right me-2"></i>Ingresar
+                                            <i className="bi bi-person-plus-fill me-2"></i>Crear Cuenta
                                         </Button>
-                                        <Button variant="outline-light" type="button">
-                                            <i className="bi bi-person-plus me-2"></i>Crear Cuenta
-                                        </Button>
-                                        <Button variant="link">Olvidé mi contraseña</Button>
+                                        <Button variant="link">Ya estoy registrado</Button>
                                     </div>
                                 </Form>
                             </Card.Body>
