@@ -106,6 +106,11 @@ export default function Board() {
   return (
     <DragDropContext onDragEnd={handleDragEnd}>
       <div className="container-fluid px-3">
+        <div className="d-flex justify-content-center mb-4">
+          <Button variant="primary" onClick={handleShow}>
+            <i className="bi bi-plus-circle"></i> Añadir Tarea
+          </Button>
+        </div>
         <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-3 px-3">
           {Object.values(columns).map(column => (
             <Column
@@ -118,14 +123,7 @@ export default function Board() {
             />
           ))}
         </div>
-        
-        <div className="d-flex justify-content-center mt-5">
-          <Button variant="primary" onClick={handleShow}>
-            <i className="bi bi-plus-circle"></i> Añadir Tarea
-          </Button>
-        </div>
       </div>
-      
       <ModalTask 
         show={show} 
         handleClose={handleClose} 
