@@ -32,7 +32,7 @@ export default function Home() {
         if (proyectoEliminado) {
             const nuevosProyectos = proyectos.filter( fila => fila.id !== idProyecto);
             setProyectos(nuevosProyectos);
-            mostrarMensaje(`Proyecto "${idProyecto}" eliminado correctamente`, "success");
+            mostrarMensaje(`Proyecto #${idProyecto} eliminado correctamente`, "success");
         } else {
             mostrarMensaje(`No se encontró el proyecto con ID ${idProyecto}`, "danger");
         }
@@ -44,7 +44,7 @@ export default function Home() {
             return;
         }
         setProyectos([...proyectos,datos]);
-        mostrarMensaje(`Proyecto "${datos.id}" agregado correctamente`, "success");
+        mostrarMensaje(`Proyecto #${datos.id} agregado correctamente`, "success");
     };
 
     const cambiarFila = (datos) => {
@@ -52,7 +52,7 @@ export default function Home() {
                 fila.id === datos.id ? datos : fila
         );
         setProyectos(nuevosProyectos);
-        mostrarMensaje(`Proyecto "${datos.id}" modificado correctamente`, "success");
+        mostrarMensaje(`Proyecto #${datos.id} modificado correctamente`, "success");
     };
 
     const handleClose = () => {
@@ -159,23 +159,23 @@ function ListHome({proyectos, abrirModalModificar, abrirModalEliminar}){
                                         ))}
                                     </ListGroup>
                                 </div>}
-                                <Link to="/backlog"><Button variant="secondary" className="me-3">
-                                    <i className="bi bi-app-indicator"></i> Abrir
-                                </Button></Link>
-                                <Button 
-                                    variant="dark"
-                                    className="me-3"
-                                    onClick={() => abrirModalModificar(proyecto)}
-                                >
-                                    <i className="bi bi-pencil-square"></i> Editar
-                                </Button>
-                                <Button 
-                                    variant="danger"
-                                    className="me-3"
-                                    onClick={() => abrirModalEliminar(proyecto)}
-                                >
-                                    <i className="bi bi-trash"></i> Borrar
-                                </Button>
+                                <div className="d-flex flex-wrap gap-2 justify-content-start">
+                                    <Link to="/backlog"><Button variant="secondary">
+                                        <i className="bi bi-app-indicator"></i> Abrir
+                                    </Button></Link>
+                                    <Button 
+                                        variant="dark"
+                                        onClick={() => abrirModalModificar(proyecto)}
+                                    >
+                                        <i className="bi bi-pencil-square"></i> Editar
+                                    </Button>
+                                    <Button 
+                                        variant="danger"
+                                        onClick={() => abrirModalEliminar(proyecto)}
+                                    >
+                                        <i className="bi bi-trash"></i> Borrar
+                                    </Button>
+                                </div>
                             </div>
                         </div>
                     ))}

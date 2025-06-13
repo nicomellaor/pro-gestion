@@ -55,8 +55,7 @@ export default function ModalHome({agregarFila, cambiarFila, eliminarFila, show,
             cambiarFila(datos);
         }
 
-        resetDatos();
-        handleClose();
+        handleModalClose();
     };
     
     const handleDelete = () => {
@@ -65,8 +64,7 @@ export default function ModalHome({agregarFila, cambiarFila, eliminarFila, show,
         }
 
         eliminarFila(id);
-        resetDatos();
-        handleClose();
+        handleModalClose();
     };
 
     const handleUsersChange = (value) => {
@@ -77,7 +75,7 @@ export default function ModalHome({agregarFila, cambiarFila, eliminarFila, show,
     const handleModalClose = () => {
         resetDatos();
         handleClose();
-    }
+    };
 
     return(
         <Modal show={show} onHide={handleModalClose} data-bs-theme="dark">
@@ -87,9 +85,8 @@ export default function ModalHome({agregarFila, cambiarFila, eliminarFila, show,
             <Modal.Body>
                 { agregando ? (
                     <div>
-                        <InputGroup>
+                        <InputGroup className="mb-3" >
                             <Form.Control
-                                className="mb-3" 
                                 placeholder="ID"
                                 type="number"
                                 min={1}
@@ -101,9 +98,8 @@ export default function ModalHome({agregarFila, cambiarFila, eliminarFila, show,
                                 {errors.id}
                             </Form.Control.Feedback>
                         </InputGroup>
-                        <InputGroup>
+                        <InputGroup className="mb-3" >
                             <Form.Control
-                                className="mb-3" 
                                 placeholder="Colaboradores (separar por coma)"
                                 value={users.join(", ")}
                                 onChange={(e) => handleUsersChange(e.target.value)}
@@ -120,9 +116,8 @@ export default function ModalHome({agregarFila, cambiarFila, eliminarFila, show,
                         </div>
                     ) : (
                         <div>
-                            <InputGroup>
+                            <InputGroup className="mb-3" >
                                 <Form.Control
-                                    className="mb-3" 
                                     placeholder="ID"
                                     type="number"
                                     min={1}
@@ -134,9 +129,8 @@ export default function ModalHome({agregarFila, cambiarFila, eliminarFila, show,
                                     {errors.id}
                                 </Form.Control.Feedback>
                             </InputGroup>
-                            <InputGroup>
+                            <InputGroup className="mb-3" >
                                 <Form.Control
-                                    className="mb-3" 
                                     placeholder="Colaboradores (separar por coma)"
                                     value={users.join(", ")}
                                     onChange={(e) => handleUsersChange(e.target.value)}
