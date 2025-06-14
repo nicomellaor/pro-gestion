@@ -6,12 +6,12 @@ import InputGroup from 'react-bootstrap/InputGroup';
 
 export default function ModalHome({agregarFila, cambiarFila, eliminarFila, show, handleClose, agregando, borrando, data}){
     const [users, setUsers] = useState([]);
-    const [id, setId] = useState(null);
+    const [id, setId] = useState("");
     const [errors, setErrors] = useState({});
 
     useEffect(() => {
         if (show && data && !agregando) {
-            setId(data.id || null);
+            setId(data.id || "");
             setUsers(data.users || []);
         }
     }, [show, data, agregando]);
@@ -29,7 +29,7 @@ export default function ModalHome({agregarFila, cambiarFila, eliminarFila, show,
     }
 
     const resetDatos = () => {
-        setId(null);
+        setId("");
         setUsers([]);
         setErrors({});
     };

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Button, Form, Container, Row, Col, Card } from 'react-bootstrap';
+import { Link } from "react-router-dom";
 
 export default function SignUp(){
     const [validated, setValidated] = useState(false);
@@ -89,7 +90,7 @@ export default function SignUp(){
                                         <Button variant="primary" type="submit">
                                             <i className="bi bi-person-plus-fill me-2"></i>Crear Cuenta
                                         </Button>
-                                        <Button variant="link">Ya estoy registrado</Button>
+                                        <Button as={Link} to="/login" variant="link">Ya estoy registrado</Button>
                                     </div>
                                 </Form>
                             </Card.Body>

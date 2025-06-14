@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { Button, Form, Container, Row, Col, Card } from 'react-bootstrap';
+import { Link, useNavigate } from "react-router-dom";
 
 export default function LogIn() {
+    const navigate = useNavigate();
     const [validated, setValidated] = useState(false);
     const [form, setForm] = useState({
         username: '',
@@ -16,6 +18,7 @@ export default function LogIn() {
         } else {
             //onSubmit(form);
             console.log('Form submitted successfully:', form);
+            navigate('/');
         }
         setValidated(true);
     };
@@ -71,7 +74,7 @@ export default function LogIn() {
                                         <Button variant="primary" type="submit">
                                             <i className="bi bi-box-arrow-in-right me-2"></i>Ingresar
                                         </Button>
-                                        <Button variant="outline-light" type="button">
+                                        <Button as={Link} to="/register" variant="outline-light" type="button">
                                             <i className="bi bi-person-plus me-2"></i>Crear Cuenta
                                         </Button>
                                         <Button variant="link">Olvidé mi contraseña</Button>
