@@ -116,13 +116,18 @@ export default function ModalTabla({ agregarFila, cambiarFila, borrando, agregan
                         </InputGroup>
 
                         {/* Prioridad */}
-                        <InputGroup className="mb-3" >
-                            <Form.Control
-                                placeholder="Prioridad"
+                        <InputGroup className="mb-3">
+                            <Form.Select
                                 value={prioridad}
                                 onChange={(e) => setPrioridad(e.target.value)}
-                            />
+                            >
+                                <option value="">Prioridad</option>
+                                <option value="Alta">Alta</option>
+                                <option value="Media">Media</option>
+                                <option value="Baja">Baja</option>
+                            </Form.Select>
                         </InputGroup>
+
 
                         {/* Puntos de prioridad */}
                         <InputGroup className="mb-3">

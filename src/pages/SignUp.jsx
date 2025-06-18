@@ -42,7 +42,10 @@ export default function SignUp(){
                                             type="text" 
                                             placeholder="Ingresa tu usuario" 
                                             value={form.username} 
-                                            onChange={(e) => setForm({...form, username: e.target.value})} 
+                                            onChange={(e) => {
+                                                const lower = e.target.value.toLowerCase();
+                                                setForm({...form, username: lower});
+                                            }} 
                                             className="text-lowercase border-0"
                                             minLength={3}
                                         />
